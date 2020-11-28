@@ -2,10 +2,37 @@
 {% import 'macros.html' as macro%}
 
 {% block content %}
-<img src="https://res.cloudinary.com/mugisha-thierry/image/upload/v1606518614/news_p3bofj.png" class="card-img-top" alt="">
+<img src="https://res.cloudinary.com/mugisha-thierry/image/upload/v1606518614/news_p3bofj.png" class="card-img-top"
+    alt="">
 
-{% for general in general %}
-<li>{{ general.url}}</li>
-{% endfor %}
-
+<div class="container">
+    <div class="card row m-1">
+        <h3>General News</h3>
+        {{ macro.displayNewsList(general)}}
+    </div>
+    <div class="card row m-1">
+        <h3>Business News News</h3>
+        {{ macro.displayNewsList(business)}}
+    </div>
+    <div class="card row m-1">
+        <h3>Health News</h3>
+        {{ macro.displayNewsList(health)}}
+    </div>
+    <div class="card row m-1">
+        <h3>Science News</h3>
+        {{ macro.displayNewsList(science)}}
+    </div>
+    <div class="card row m-1">
+        <h3>Sport News</h3>
+        {{ macro.displayNewsList(sports)}}
+    </div>
+    <div class="card row m-1">
+        <h3>Entertainment News News</h3>
+        {{ macro.displayNewsList(entertainment)}}
+    </div>
+    <div class="card row m-1">
+        <h3>Technology News</h3>
+        {{ macro.displayNewsList(technology)}}
+    </div>
+</div>
 {% endblock %}
