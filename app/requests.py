@@ -33,13 +33,13 @@ def get_news_source(category):
 
 def process_results(news_list):
     """
-    Function  that processes the movie result and transform them to a list of Objects
+    Function  that processes the news result and transform them to a list of Objects
 
     Args:
-        movie_list: A list of dictionaries that contain movie details
+        news_list: A list of dictionaries that contain news sources
 
     Returns :
-        movie_results: A list of movie objects
+        news_results: A list of news objects
     """
     news_results = []
 
@@ -57,7 +57,7 @@ def process_results(news_list):
 
 
 
-
+# article functions
 
 
 
@@ -77,3 +77,36 @@ def get_news_article(id):
             article_results = process_results(article_results_list)
 
     return article_results 
+
+def process_article(article_list):
+    """
+    Function  that processes the article result and transform them to a list of Objects
+
+    Args:
+        article_list: A list of dictionaries that contain article details
+
+    Returns :
+        article_results: A list of article objects
+    """
+    article_results = []
+    source_dictionary = {}
+
+    for article_item in article_list:
+        source_id = result ['source']
+        source_dictionary['id'] = source_id['id']
+        source_dictionary['name'] = source_id['name']
+        id = source_dictionary['id']
+        name = source_dictionary['name']
+
+        author = article_item.get('author')
+        title = article_item.get('title')
+        description = article_item.get('description')
+        url = article_item.get('url')
+        urlToImage = article_item.get('urlToImage')
+        publishedAt = article_item.get('publishedAt')
+
+        if urlToImage:
+            article_object = Article(id,name,author,title,description,url,urlToImage,publishedAt)
+            article_results.append(article_object)
+
+    return article_results       
