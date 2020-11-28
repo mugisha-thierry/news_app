@@ -24,8 +24,8 @@ def get_news_source(category):
 
         news_results = None
 
-        if get_news_response['results']:
-            news_results_list = get_news_response['results']
+        if get_news_response['sources']:
+            news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
 
     return news_results 
@@ -44,13 +44,36 @@ def process_results(news_list):
     news_results = []
 
     for news_item in news_list:
-        id = sources_item.get('id')
-        name = sources_item.get('name')
-        url = sources_item.get('url')
-        category = sources_item.get('category')
+        id = news_item.get('id')
+        name = news_item.get('name')
+        url = news_item.get('url')
+        category = news_item.get('category')
 
         if id:
             news_object = News(id,name,url,category)
             news_results.append(news_object)
 
-    return news_results        
+    return news_results   
+
+
+
+
+
+
+
+def get_news_article(id):
+    """
+    Function that gets the json response to our url request
+    """
+    get_article_url = article_url.format(id,api_key)
+    with urllib.request.urlopen(get_article_url) as url:
+        get_article_data = url.read()
+        get_article_response = json.loads(get_article_data)
+
+        article_results = None
+
+        if get_article_response['articles']:
+            article_results_list = get_article_response['articles']
+            article_results = process_results(article_results_list)
+
+    return article_results 
