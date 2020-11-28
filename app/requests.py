@@ -74,7 +74,7 @@ def get_news_article(id):
 
         if get_article_response['articles']:
             article_results_list = get_article_response['articles']
-            article_results = process_results(article_results_list)
+            article_results = process_article(article_results_list)
 
     return article_results 
 
@@ -92,9 +92,11 @@ def process_article(article_list):
     source_dictionary = {}
 
     for article_item in article_list:
-        source_id = result ['source']
+        source_id = article_item['source']
+
         source_dictionary['id'] = source_id['id']
         source_dictionary['name'] = source_id['name']
+
         id = source_dictionary['id']
         name = source_dictionary['name']
 
@@ -106,6 +108,7 @@ def process_article(article_list):
         publishedAt = article_item.get('publishedAt')
 
         if urlToImage:
+            print (id)
             article_object = Article(id,name,author,title,description,url,urlToImage,publishedAt)
             article_results.append(article_object)
 
