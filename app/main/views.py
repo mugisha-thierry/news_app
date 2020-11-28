@@ -26,7 +26,8 @@ def article(id):
     """
     View  page function that returns the article page and its data
     """
+    articles = get_news_article(id)
     title = 'News Articles'
-    return render_template('article.html', title=title)
+    return render_template('article.html',articles=articles,title=title)
 
 
