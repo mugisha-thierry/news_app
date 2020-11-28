@@ -4,4 +4,8 @@
 {% block content %}
 <img src="https://res.cloudinary.com/mugisha-thierry/image/upload/v1606518614/news_p3bofj.png" class="card-img-top" alt="">
 
+{% for general in general %}
+<li>{{ general.url}}</li>
+{% endfor %}
+
 {% endblock %}
