@@ -1,0 +1,11 @@
+{% macro displayNewsList(news_list) %}
+<div class="container">
+    <div class="row">
+        {% for news in news_list %}
+            <div class="col-md-3">
+                <a href="/news/{{news.id}}">{{news.name}}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}
