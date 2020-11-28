@@ -1,7 +1,6 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..requests import get_news_source
-# ,get_movie,search_movie
+from ..requests import get_news_source,get_news_article
 # from .forms import ReviewForm
 # from ..models import Article,News
 
@@ -21,5 +20,13 @@ def index():
     title='News source'
     return render_template('index.html',title=title,general=general,entertainment=entertainment,business=business,health=health,sports=sports,science=science,technology=technology)
 
+
+@main.route('/article/<id>')
+def article(id):
+    """
+    View  page function that returns the article page and its data
+    """
+    title = 'News Articles'
+    return render_template('article.html', title=title)
 
 
