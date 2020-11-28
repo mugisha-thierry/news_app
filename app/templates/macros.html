@@ -1,10 +1,40 @@
+{% macro displayNewsArticle(articles_list)%}
+<div class="container">
+    <h2 class="text-info mb-3">News</h2>
+    <div class="row">
+        {% for article_item in articles_list %}
+        <div class="col-md-6">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{article_item.urlToImage}}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{article_item.title}}</h5>
+                            <p class="card-text">{{article_item.description}}</p>
+                            <p class="card-text"><strong>BY:</strong> {{article_item.author}}</p>
+                            <p class="card-text"><small class="text-muted">{{article_item.publishedAt}}</small></p>
+                            <a href="{{article_item.url}}" class="btn btn-primary btn-lg btn-block">Read News Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}
+
+
+
 {% macro displayNewsList(news_list) %}
 <div class="container">
     <div class="row">
         {% for news in news_list %}
-            <div class="col-md-3">
-                <a href="/news/{{news.id}}">{{news.name}}</a>
-            </div>
+        <div class="col-md-3">
+            <a href="/article/{{news.id}}">{{news.name}}</a>
+        </div>
         {% endfor %}
     </div>
 </div>
